@@ -1,17 +1,52 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>Validate form</div>
+    <form-component is-validate-form>
+      <input-component 
+        v-model="firstInputValue"
+        placeholder="required field"
+        :validate-rules="['required']"
+      />
+      <input-component 
+        v-model="secondInputValue"
+        placeholder="url"
+        :validate-rules="['url']"
+      />
+    </form-component>
+
+
+    <div class="mt-4">Validate input</div>
+    <form-component>
+      <input-component 
+        v-model="thirdInputValue" 
+        :validate-rules="['required']" 
+      />
+      <input-component 
+        v-model="fourthInputValue"
+        placeholder="url"
+        :validate-rules="['url']"
+      />
+    </form-component>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import FormComponent from './components/FormComponent'
+import InputComponent from './components/InputComponent'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    FormComponent,
+    InputComponent
+  },
+  data() {
+    return {
+      firstInputValue: '',
+      secondInputValue: '',
+      thirdInputValue: '',
+      fourthInputValue: '',
+    }
   }
 }
 </script>
@@ -24,5 +59,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.mt-4 {
+  margin-top: 40px;
 }
 </style>
